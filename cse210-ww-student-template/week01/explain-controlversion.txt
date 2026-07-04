@@ -1,0 +1,13 @@
+Version control is a system that keeps a careful record of changes made to files over time.
+This means you can always look at or go back to older versions of your work if you need to.
+One major benefit of version control is that it stops you from losing your progress. If you make a bad mistake, your previous work is still safe.
+For example, imagine a software development team building a new mobile app. With version control, five different programmers can write code for the app at the exact same time without accidentally erasing each other's work. 
+If developer writes a bug that breaks the app, the team does not panic. They can simply use a command like git revert to undo the bad change and safely go back to the working version. This makes teamwork much faster and less stressful.
+
+
+
+
+
+
+
+
