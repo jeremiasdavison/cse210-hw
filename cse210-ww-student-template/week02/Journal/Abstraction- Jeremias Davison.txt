@@ -1,0 +1,18 @@
+Explain Abstraction
+
+Meaning:
+Abstraction is a programming principle that means hiding the complex, internal details of how something works, and only showing the parts that other code actually needs to use. In other words, a class shows *what* it does, but not *how* it does it internally. The person using the class does not need to know every small detail inside it; they just need to know which methods are available and what those methods do.
+
+Benefit:
+The main benefit of abstraction is that it makes code easier to understand, use, and maintain. If the internal details of a class are hidden, a programmer can change how the class works inside without breaking the other parts of the program that use it. This also reduces mistakes, because the person using the class cannot accidentally touch or break internal data they should not be modifying.
+
+Application (example):
+In my Journal program, the `Journal` class is a good example of abstraction. Other code does not need to know that entries are stored in a `List<Entry>`, or how the file is written line by line when saving. It only needs to call simple methods like `AddEntry`, `DisplayAll`, `SaveToFile`, and `LoadFromFile`. All the complex logic (looping through entries, building the text line, opening and closing the file) stays hidden inside the class.
+
+Code example:
+csharp
+Journal myJournal = new Journal();
+myJournal.AddEntry(newEntry);
+myJournal.SaveToFile("myJournal.txt");
+
+The code above uses the `Journal` class without knowing anything about how entries are stored internally or how the file writing actually happens — that complexity is abstracted away.
