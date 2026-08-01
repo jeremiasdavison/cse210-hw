@@ -1,0 +1,58 @@
+Meaning
+Inheritance is one of the main principles of object oriented programming. 
+It means that a class can be built from another class and receive its attributes 
+and its behaviors automatically. The original class is called the base class or parent 
+class, and the new one is called the derived class or child class. The child class already 
+has everything the parent has, so I only need to write the parts that are different. I can also 
+add new attributes and methods of my own, or replace a method that I received when the child needs 
+to perform that action in a different way.
+
+Benefit
+The biggest benefit for me is that I stop repeating code. When several classes need the same data 
+or the same actions, I write that part one single time in the base class instead of copying it into 
+every class. This saves time, but the more important thing is that it makes the program easier to fix. 
+If I find a mistake in a shared method, I correct it in one place and every child class receives the 
+correction. It also keeps the program organized, because when I read the code I can see quickly what all 
+the classes have in common and what makes each one different.
+
+Application
+In my Mindfulness program I created a base class called Activity. It holds the name, the description 
+and the duration of the session, and it also holds the behaviors that every activity repeats: the 
+starting message, the ending message, the spinner and the countdown. Then I created BreathingActivity, 
+ReflectingActivity and ListingActivity, and the three of them come from Activity. All of them run exactly 
+the same opening and closing, and the only thing each one writes for itself is what happens in the middle
+of the session. Without inheritance I would have needed to copy that opening and closing code three 
+times.
+
+abstract class Activity
+{
+    private string _name;
+    private string _description;
+    private int _duration;
+
+    public void Run()
+    {
+        DisplayStartingMessage();
+        RunActivity();
+        DisplayEndingMessage();
+    }
+
+    protected abstract void RunActivity();
+}
+
+class BreathingActivity : Activity
+{
+    protected override void RunActivity()
+    {
+        DateTime endTime = GetEndTime();
+        bool breatheIn = true;
+
+        while (GetSecondsRemaining(endTime) > 0)
+        {
+            string label = breatheIn ? "Breathe in... " : "Breathe out...";
+            ShowBreath(label, 4, breatheIn);
+            breatheIn = !breatheIn;
+        }
+    }
+}
+
